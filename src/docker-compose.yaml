@@ -1,0 +1,101 @@
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    build:
+      context: ./requirements/nginx
+      args:
+        - ALPINE_VER=3.22
+    networks:
+      - inception
+    depends_on: 
+      - wordpress
+    volumes:
+      - wordpress:/var/www/html
+    ports: 
+      - "443:443"
+    env_file:
+      - .env
+    restart: always
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    build:
+      context: ./requirements/wordpress
+    networks:
+      - inception
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress:/var/www/html
+    env_file:
+      - .env
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME}
+      - WP_DB_HOST=mariadb:3306
+      - WP_DB_NAME=${DB_NAME}
+      - WP_DB_PASSWORD_FILE=/run/secrets/db_password
+      - WP_DB_USER=${DB_USER}
+      - WP_ADMIN_USER=${WP_ADMIN_USER}
+      - WP_ADMIN_EMAIL=${WP_ADMIN_EMAIL}
+      - WP_ADMIN_PASSWORD_FILE=/run/secrets/wp_admin_password
+      - WP_USER=${WP_USER}
+      - WP_USER_EMAIL=${WP_USER_EMAIL}
+      - WP_USER_PASSWORD_FILE=/run/secrets/wp_user_password
+    secrets:
+      - db_password
+      - wp_admin_password
+      - wp_user_password
+    restart: always
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    build:
+      context: ./requirements/mariadb
+    networks:
+      - inception
+    volumes:
+      - mariadb:/var/lib/mysql
+    env_file: .env
+    environment:
+      - MARIADB_DATABASE_NAME=${DB_NAME}
+      - MARIADB_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
+      - MARIADB_USER=${DB_USER}
+      - MARIADB_PASSWORD_FILE=/run/secrets/db_password
+    secrets:
+      - db_password
+      - db_root_password
+    restart: always
+
+volumes:
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/razaccar/data/mariadb
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/razaccar/data/wordpress
+
+networks:
+  inception:
+    name: inception
+    driver: bridge
+
+secrets:
+  db_password:
+    file: /home/inception/inception/secrets/db_password.txt
+  db_root_password:
+    file: /home/inception/inception/secrets/db_root_password.txt
+  wp_admin_password:
+    file: /home/inception/inception/secrets/wp_admin_password.txt
+  wp_user_password:
+    file: /home/inception/inception/secrets/wp_user_password.txt
