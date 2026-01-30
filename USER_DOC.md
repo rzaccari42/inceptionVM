@@ -1,9 +1,4 @@
----
-id: USER_DOC
-aliases:
-  - User Documentation
-tags: []
----
+This project has been created as part of the 42 curriculum by razaccar.
 
 # User Documentation
 This project provides a secure WordPress website, ready to use through a web browser.

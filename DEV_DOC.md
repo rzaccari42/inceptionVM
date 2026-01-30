@@ -1,9 +1,4 @@
----
-id: DEV_DOC
-aliases:
-  - Developer documentation
-tags: []
----
+This project has been created as part of the 42 curriculum by razaccar.
 
 # Developer documentation
 This document describes how to set up, build, run, and maintain the Inception project

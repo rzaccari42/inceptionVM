@@ -118,15 +118,15 @@ make ps         # inspect docker processes
 ### References
 
 <ins>Web links</ins>
-[Docker official documentation](https://docs.docker.com)
-[NGINX Beginner's guide](https://nginx.org/en/docs/beginners_guide.html)
-[NGINX HTTPS configuration (SSL/TLS)](https://nginx.org/en/docs/http/configuring_https_servers.html)
-[Transport Layer Security - Wikipedia](https://en.wikipedia.org/wiki/Transport_Layer_Security)
-[Understanding PHP-FPM](https://dev.to/arsalanmee/understanding-php-fpm-a-comprehensive-guide-3ng8)
-[FastCGI Process Manager (FPM) Installation and configuration](https://www.php.net/manual/en/install.fpm.php)
-[MariaDB official documentation](https://mariadb.com/docs/server/mariadb-quickstart-guides/mariadb-advanced-sql-guide)
-[Basic SQL database querries](https://systemweakness.com/setup-mariadb-using-the-command-line-interface-cli-6c3103b34cb3)
-[WordPress Developer resource - CLI commands](https://developer.wordpress.org/cli/commands/)
+- [Docker official documentation](https://docs.docker.com)
+- [NGINX Beginner's guide](https://nginx.org/en/docs/beginners_guide.html)
+- [NGINX HTTPS configuration (SSL/TLS)](https://nginx.org/en/docs/http/configuring_https_servers.html)
+- [Transport Layer Security - Wikipedia](https://en.wikipedia.org/wiki/Transport_Layer_Security)
+- [Understanding PHP-FPM](https://dev.to/arsalanmee/understanding-php-fpm-a-comprehensive-guide-3ng8)
+- [FastCGI Process Manager (FPM) Installation and configuration](https://www.php.net/manual/en/install.fpm.php)
+- [MariaDB official documentation](https://mariadb.com/docs/server/mariadb-quickstart-guides/mariadb-advanced-sql-guide)
+- [Basic SQL database querries](https://systemweakness.com/setup-mariadb-using-the-command-line-interface-cli-6c3103b34cb3)
+- [WordPress Developer resource - CLI commands](https://developer.wordpress.org/cli/commands/)
 
 CLI manuals for docker, docker compose and mariadb.
 
